@@ -50,9 +50,11 @@ public class EmailService {
                 for (Map<String, String> photoInfo : photoInfoList) {
                     String imageUrl = photoInfo.get("url");
                     String key = photoInfo.get("key");
+                    String size = photoInfo.get("size");
+
                     sb.append("<div style='margin: 10px;'>");
-                    sb.append("<img src='").append(imageUrl).append("' style='max-width: 300px;' />");
-                    sb.append("<p>").append(key.substring(key.lastIndexOf('/') + 1)).append("</p>");
+                    sb.append("<img src='").append(imageUrl).append("' style='max-width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);' />");
+                    sb.append("<p style='font-size: 12px; color: #666;'>").append(key.substring(key.lastIndexOf('/') + 1)).append(" (").append(formatSize(Long.parseLong(size))).append(")</p>");
                     sb.append("</div>");
                 }
                 sb.append("</div>");
